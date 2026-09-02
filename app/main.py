@@ -6,7 +6,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from threading import Thread
 
 import psutil
-from prometheus_client import CONTENT_TYPE_LATEST, Gauge, REGISTRY, generate_latest
+from prometheus_client import CONTENT_TYPE_LATEST, REGISTRY, Gauge, generate_latest
 
 logging.basicConfig(level=os.getenv('LOG_LEVEL', 'INFO'))
 logger = logging.getLogger(__name__)
