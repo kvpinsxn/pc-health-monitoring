@@ -11,7 +11,7 @@ from prometheus_client import CONTENT_TYPE_LATEST, REGISTRY, Gauge, generate_lat
 logging.basicConfig(level=os.getenv('LOG_LEVEL', 'INFO'))
 logger = logging.getLogger(__name__)
 
-HOST = os.getenv('METRICS_HOST', '0.0.0.0')
+HOST = os.getenv('METRICS_HOST', '0.0.0.0')  # nosec B104: required for container networking
 PORT = int(os.getenv('APP_PORT', '8080'))
 DISK_PATH = os.getenv('DISK_PATH', '/')
 METRICS_INTERVAL = float(os.getenv('METRICS_INTERVAL', '5'))
