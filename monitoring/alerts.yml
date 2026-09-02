@@ -1,0 +1,47 @@
+groups:
+  - name: pc-health-alerts
+    rules:
+      - alert: HighCPUUsage
+        expr: pc_cpu_usage_percent > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High CPU usage
+          description: CPU usage is above 80% for more than 5 minutes.
+
+      - alert: HighMemoryUsage
+        expr: pc_memory_usage_percent > 90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High memory usage
+          description: Memory usage is above 90% for more than 5 minutes.
+
+      - alert: LowDiskSpace
+        expr: pc_disk_usage_percent > 90
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: Low disk space
+          description: Disk usage is above 90% for more than 10 minutes.
+
+      - alert: ExporterDown
+        expr: up{job="python-exporter"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Python exporter is down
+          description: Prometheus cannot scrape the Python exporter.
+
+      - alert: NodeExporterDown
+        expr: up{job="node-exporter"} == 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Node Exporter is down
+          description: Host-level metrics are unavailable.
