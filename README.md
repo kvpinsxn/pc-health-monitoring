@@ -35,9 +35,6 @@ Copy-Item .env.example .env
 docker compose up --build
 ```
 
-The `.env` file is intentionally ignored by Git. Commit only `.env.example`
-and never commit real passwords or tokens.
-
 After startup:
 
 - Metrics: http://localhost:8080/metrics
