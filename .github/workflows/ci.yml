@@ -39,7 +39,7 @@ jobs:
         run: pip-audit -r requirements.txt
 
       - name: Validate Compose configuration
-        run: GRAFANA_ADMIN_PASSWORD=ci-test-password docker compose --env-file .env.example config --quiet
+        run: GRAFANA_ADMIN_PASSWORD=ci-test-password docker compose config --quiet
 
   container:
     runs-on: ubuntu-latest
